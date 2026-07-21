@@ -1,0 +1,24 @@
+# Python
+__pycache__/
+*.pyc
+
+# Environment
+backend/.env
+.env
+
+# Virtual Environment
+backend/.venv/
+.venv/
+
+# Uploads
+backend/app/uploads/
+
+# ChromaDB
+backend/chroma_db/
+
+# Frontend
+frontend/node_modules/
+frontend/dist/
+
+# VS Code
+.vscode/
