@@ -22,3 +22,6 @@ frontend/dist/
 
 # VS Code
 .vscode/
+.env
+.env.*
+!.env.example
