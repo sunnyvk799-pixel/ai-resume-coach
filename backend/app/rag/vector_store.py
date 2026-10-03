@@ -1,22 +1,19 @@
 import chromadb
 
+from app.core.config import settings
+
 
 class VectorStore:
-
     def __init__(self):
-        self.client = chromadb.PersistentClient(path="chroma_db")
+        self.client = chromadb.PersistentClient(
+            path=settings.CHROMA_PATH
+        )
 
         self.collection = self.client.get_or_create_collection(
             name="resume_coach"
         )
 
-    def add_documents(
-        self,
-        ids,
-        documents,
-        embeddings,
-        metadatas
-    ):
+    def add_documents(self, ids, documents, embeddings, metadatas):
         self.collection.add(
             ids=ids,
             documents=documents,
@@ -24,18 +21,12 @@ class VectorStore:
             metadatas=metadatas
         )
 
-    def search(
-        self,
-        embedding,
-        document_id,
-        k=3
-    ):
+    def search(self, embedding, document_id, k=3):
         return self.collection.query(
             query_embeddings=[embedding],
             n_results=k,
-            where={
-                "document_id": document_id
-            }
+            where={"document_id": document_id}
         )
+
 
 vector_store = VectorStore()
