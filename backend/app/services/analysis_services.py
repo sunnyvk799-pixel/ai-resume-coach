@@ -5,10 +5,10 @@ from app.rag.chunker import chunk_text
 from app.rag.embeddings import embed_chunks
 from app.rag.vector_store import vector_store
 
-document_id = str(uuid.uuid4())
 class AnalysisService:
 
     def analyze(self, resume_text: str, jd_text: str):
+        document_id = str(uuid.uuid4())
 
         # ATS Analysis
         ats_result = analyze(resume_text, jd_text)
